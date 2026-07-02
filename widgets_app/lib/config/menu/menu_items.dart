@@ -24,7 +24,7 @@ final appMenuItem = <MenuItem>[
   MenuItem(
     title: 'Tarjetas',
     subtitle: 'Un contador estilizado',
-    link: '/card',
+    link: '/cards',
     icon: Icons.credit_card,
   ),
   // MenuItem(title: '', subtitle: '', link: '', icon: null),

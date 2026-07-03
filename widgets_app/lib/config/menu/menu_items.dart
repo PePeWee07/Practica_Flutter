@@ -51,6 +51,12 @@ final appMenuItem = <MenuItem>[
     link: '/ui-controls',
     icon: Icons.car_rental_outlined,
   ),
+  MenuItem(
+    title: 'App tutorial',
+    subtitle: 'Introduccion a la APP',
+    link: '/tutorial',
+    icon: Icons.accessible_rounded,
+  ),
 
   // MenuItem(title: '', subtitle: '', link: '', icon: null),
 ];

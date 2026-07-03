@@ -45,6 +45,12 @@ final appMenuItem = <MenuItem>[
     link: '/animated',
     icon: Icons.check_box_outlined,
   ),
+  MenuItem(
+    title: 'Ui Control + tiles',
+    subtitle: 'Una series de controles',
+    link: '/ui-controls',
+    icon: Icons.car_rental_outlined,
+  ),
 
   // MenuItem(title: '', subtitle: '', link: '', icon: null),
 ];

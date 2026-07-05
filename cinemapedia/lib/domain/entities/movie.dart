@@ -22,6 +22,7 @@ class Movie {
     required this.originalLanguage,
     required this.originalTitle,
     required this.overview,
+    
     required this.popularity,
     required this.posterPath,
     required this.releaseDate,

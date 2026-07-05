@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
 
 const List<Color> colorList = [
+  Colors.transparent,
   Colors.black,
+  Colors.white,
+  Colors.grey,
   Colors.yellowAccent,
   Colors.purple,
   Colors.teal,
   Colors.lightGreenAccent,
   Colors.lightBlueAccent,
   Colors.indigo,
-  Colors.cyan,
-  Colors.transparent,
-  Colors.white70,
 ];
 
 class AppTheme {
   final int selectColor;
+  final bool isDarkmode;
 
-  AppTheme({this.selectColor = 0})
+  AppTheme({this.selectColor = 0, this.isDarkmode = false})
     : assert(
         selectColor >= 0 && selectColor <= colorList.length - 1,
         'Los colores deben ser entre 0 y ${colorList.length}',
       );
 
-  ThemeData theme() {
+  ThemeData getTheme() {
     return ThemeData(
       useMaterial3: true,
+      brightness: isDarkmode ? Brightness.dark : Brightness.light,
       colorSchemeSeed: colorList[selectColor],
-      // brightness: Brightness.dark,
       appBarTheme: const AppBarTheme(centerTitle: false),
     );
   }

@@ -16,6 +16,18 @@ class MenuItem {
 
 final appMenuItem = <MenuItem>[
   MenuItem(
+    title: 'Counter Riverpod',
+    subtitle: 'Contador con gestor estado Riverpod',
+    link: '/counter',
+    icon: Icons.soap_rounded,
+  ),
+  MenuItem(
+    title: 'Theme Changer',
+    subtitle: 'Cambiar tema globalmente',
+    link: '/theme-changer',
+    icon: Icons.color_lens_sharp,
+  ),
+  MenuItem(
     title: 'Botones',
     subtitle: 'Varios botones en Flutter',
     link: '/buttons',

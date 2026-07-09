@@ -23,7 +23,13 @@ class BlocCounterView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bloc Counter ${eventIncrement.state.trasactionCount}'),
+        // Usar con context.select
+        // title: Text('Bloc Counter ${eventIncrement.state.trasactionCount}'),
+        // Usar con BlocBuilder
+        title: BlocBuilder<CounterBloc, CounterState>(
+          builder: (context, state) =>
+              Text('Bloc Counter ${state.trasactionCount}'),
+        ),
         actions: [
           IconButton(
             onPressed: () => {eventIncrement.add(const CounterReset())},
@@ -32,9 +38,17 @@ class BlocCounterView extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: context.select(
-          (CounterBloc value) => Text(
-            'Counter BLoC: ${value.state.counter}',
+        // Redibuja todo (Aunque flutter es eficiente no usar en widgets grandes)
+        // child: context.select(
+        //   (CounterBloc value) => Text(
+        //     'Counter BLoC: ${value.state.counter}',
+        //     style: const TextStyle(fontSize: 25),
+        //   ),
+        // ),
+        // Redibuja solo el texto (Recomendado)
+        child: BlocBuilder<CounterBloc, CounterState>(
+          builder: (context, state) => Text(
+            'Counter BLoC: ${state.counter}',
             style: const TextStyle(fontSize: 25),
           ),
         ),

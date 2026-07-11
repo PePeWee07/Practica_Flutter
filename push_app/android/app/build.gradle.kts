@@ -19,7 +19,9 @@ android {
         applicationId = "com.example.push_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
+
+        //--- minSdk = flutter.minSdkVersion --- VERSION MINIMA DE FLUTTER
+        minSdk = 19 // VERSION MINIMA PRA NOTIFICACIONES PUSH FIREBASE
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName

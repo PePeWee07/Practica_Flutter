@@ -1,11 +1,14 @@
 plugins {
     id("com.android.application")
+    // START: FlutterFire Configuration
+    id("com.google.gms.google-services")
+    // END: FlutterFire Configuration
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
 
 android {
-    namespace = "com.example.push_app"
+    namespace = "com.pepewee07.push_app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -16,12 +19,12 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.push_app"
+        applicationId = "com.pepewee07.push_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
 
         //--- minSdk = flutter.minSdkVersion --- VERSION MINIMA DE FLUTTER
-        minSdk = 19 // VERSION MINIMA PRA NOTIFICACIONES PUSH FIREBASE
+        minSdk = flutter.minSdkVersion // VERSION MINIMA PRA NOTIFICACIONES PUSH FIREBASE
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName

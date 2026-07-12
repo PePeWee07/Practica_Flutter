@@ -4,8 +4,8 @@ class NotificationsState extends Equatable {
   // Metodo de Firebase
   final AuthorizationStatus status;
 
-  //Todo: Modelo de Notificaciones
-  final List<dynamic> notifications;
+  // Modelo de notificaciones(Mio)
+  final List<PushMessage> notifications;
 
   const NotificationsState({
     this.status = AuthorizationStatus.notDetermined,
@@ -17,7 +17,7 @@ class NotificationsState extends Equatable {
 
   NotificationsState copywith({
     AuthorizationStatus? status,
-    List<dynamic>? notifications
+    List<PushMessage>? notifications
   }) => NotificationsState(
     status: status ?? this.status,
     notifications: notifications ?? this.notifications

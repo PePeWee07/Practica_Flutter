@@ -27,9 +27,7 @@ class HomeScreen extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
             if (state.status == UserStatus.error) {
-              return Center(
-                child: Text('Error: ${state.errorMessage}'),
-              );
+              return Center(child: Text('Error: ${state.errorMessage}'));
             }
             if (state.status != UserStatus.loaded) {
               return const Center(child: Text('Sin datos'));

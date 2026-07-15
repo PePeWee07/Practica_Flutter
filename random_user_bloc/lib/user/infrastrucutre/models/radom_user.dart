@@ -106,7 +106,7 @@ class Location {
     city: json["city"],
     state: json["state"],
     country: json["country"],
-    postcode: json["postcode"],
+    postcode: json["postcode"].toString(),
     coordinates: Coordinates.fromJson(json["coordinates"]),
     timezone: Timezone.fromJson(json["timezone"]),
   );

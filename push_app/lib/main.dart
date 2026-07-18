@@ -27,7 +27,51 @@ class MainApp extends StatelessWidget {
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
       theme: AppTheme().getTheme(),
-      // home: const Scaffold(body: Center(child: Text('Hello World!'))),
+      builder: (context, child) => HandleNotificacionInteracions(child: child!),
     );
+  }
+}
+
+class HandleNotificacionInteracions extends StatefulWidget {
+  final Widget child;
+
+  const HandleNotificacionInteracions({super.key, required this.child});
+
+  @override
+  State<HandleNotificacionInteracions> createState() =>
+      _HandleNotificacionInteracionsState();
+}
+
+class _HandleNotificacionInteracionsState
+    extends State<HandleNotificacionInteracions> {
+  Future<void> setupInteractedMessage() async {
+    RemoteMessage? initialMessage = await FirebaseMessaging.instance
+        .getInitialMessage();
+    if (initialMessage != null) {
+      _handleMessage(initialMessage);
+    }
+    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
+  }
+
+  void _handleMessage(RemoteMessage message) {
+    context.read<NotificationsBloc>().handleRemoteMessage(message);
+    final messageId = message.messageId
+        ?.replaceAll(':', '')
+        .replaceAll('%', '');
+    appRouter.push('/push-details/:$messageId');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Run code required to handle interacted messages in an async function
+    // as initState() must not be async
+    setupInteractedMessage();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return widget.child;
   }
 }

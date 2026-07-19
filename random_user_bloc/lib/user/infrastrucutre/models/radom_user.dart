@@ -28,18 +28,18 @@ class RandomUser {
   });
 
   factory RandomUser.fromJson(Map<String, dynamic> json) => RandomUser(
-    gender: json["gender"],
-    name: Name.fromJson(json["name"]),
-    location: Location.fromJson(json["location"]),
-    email: json["email"],
-    login: Login.fromJson(json["login"]),
+    gender: json["gender"] ?? 'undefine',
+    name: Name.fromJson(json["name"] ?? 'undefine'),
+    location: Location.fromJson(json["location"] ?? 'undefine'),
+    email: json["email"] ?? 'undefine',
+    login: Login.fromJson(json["login"] ?? 'undefine'),
     dob: Dob.fromJson(json["dob"]),
-    registered: Dob.fromJson(json["registered"]),
-    phone: json["phone"],
-    cell: json["cell"],
-    id: Id.fromJson(json["id"]),
-    picture: Picture.fromJson(json["picture"]),
-    nat: json["nat"],
+    registered: Dob.fromJson(json["registered"] ?? 'undefine'),
+    phone: json["phone"] ?? 'undefine',
+    cell: json["cell"] ?? 'undefine',
+    id: Id.fromJson(json["id"] ?? 'undefine'),
+    picture: Picture.fromJson(json["picture"] ?? 'undefine'),
+    nat: json["nat"] ?? 'undefine',
   );
 
   Map<String, dynamic> toJson() => {
@@ -72,7 +72,7 @@ class Dob {
 
 class Id {
   final String name;
-  final String value;
+  final String? value;
 
   Id({required this.name, required this.value});
 

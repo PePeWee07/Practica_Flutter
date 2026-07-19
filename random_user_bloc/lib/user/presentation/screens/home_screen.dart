@@ -9,10 +9,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) =>
-          UserBloc(userRepository: UserRepositoryImpl(UserDatasourceImpl()))
-            ..add(LoadRandomUser()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) =>
+              UserBloc(userRepository: UserRepositoryImpl(UserDatasourceImpl()))
+                ..add(LoadRandomUser()),
+        ),
+      ],
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -21,21 +25,30 @@ class HomeScreen extends StatelessWidget {
             style: TextStyle(fontSize: 19),
           ),
         ),
-        body: BlocBuilder<UserBloc, UserState>(
-          builder: (context, state) {
-            if (state.status == UserStatus.loading) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (state.status == UserStatus.error) {
-              return Center(child: Text('Error: ${state.errorMessage}'));
-            }
-            if (state.status != UserStatus.loaded) {
-              return const Center(child: Text('Sin datos'));
-            }
-            return Text(state.user!.firstName);
-          },
-        ),
+        body: Center(child: Column(children: [OneRandomUser()])),
       ),
+    );
+  }
+}
+
+class OneRandomUser extends StatelessWidget {
+  const OneRandomUser({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        if (state.status == UserStatus.loading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (state.status == UserStatus.error) {
+          return Center(child: Text('Error: ${state.errorMessage}'));
+        }
+        if (state.status != UserStatus.loaded) {
+          return const Center(child: Text('Sin datos'));
+        }
+        return Text(state.user!.firstName);
+      },
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:random_user_bloc/user/infrastrucutre/datasources/user_datasource_impl.dart';
 import 'package:random_user_bloc/user/infrastrucutre/repositories/user_repository_impl.dart';
-import 'package:random_user_bloc/user/presentation/bloc/user_bloc.dart';
+import 'package:random_user_bloc/user/presentation/bloc/user_random/user_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

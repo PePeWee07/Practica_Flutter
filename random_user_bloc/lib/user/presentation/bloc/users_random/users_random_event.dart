@@ -6,3 +6,7 @@ sealed class UsersRandomEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class UsersRandomRequest extends UsersRandomEvent {
+  const UsersRandomRequest();
+}

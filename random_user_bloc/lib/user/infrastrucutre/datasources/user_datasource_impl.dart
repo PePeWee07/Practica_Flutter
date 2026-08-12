@@ -15,10 +15,26 @@ class UserDatasourceImpl implements UserDatasource {
     final RandomData randomData = RandomData.fromJson(resp.data);
     final List<RandomUser> userRandomList = randomData.results;
 
-    final user = userRandomList.map(
-      (user) => UserMapper.randomUserToEntity(user),
-    ).toList();
+    final user = userRandomList
+        .map((user) => UserMapper.randomUserToEntity(user))
+        .toList();
 
     return user.first;
+  }
+
+  @override
+  Future<List<MyUser>> getUsersRandom(int numberUsers) async {
+    final resp = await _dio.get(
+      'https://randomuser.me/api/?results=$numberUsers ',
+    );
+
+    final randomData = RandomData.fromJson(resp.data);
+    final List<RandomUser> userRandomList = randomData.results;
+
+    final user = userRandomList
+        .map((userRandom) => UserMapper.randomUserToEntity(userRandom))
+        .toList();
+        
+    return user;
   }
 }

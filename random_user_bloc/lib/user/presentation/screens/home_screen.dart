@@ -25,7 +25,17 @@ class HomeScreen extends StatelessWidget {
             style: TextStyle(fontSize: 19),
           ),
         ),
-        body: Center(child: Column(children: [OneRandomUser()])),
+        body: Center(
+          child: Column(
+            children: [
+              Text('Primer Usuario', style: TextStyle(fontSize: 20)),
+              OneRandomUser(),
+              Divider(),
+              Text('Lista de Usuarios', style: TextStyle(fontSize: 20)),
+              ListRandomUsers()
+            ],
+          ),
+        ),
       ),
     );
   }

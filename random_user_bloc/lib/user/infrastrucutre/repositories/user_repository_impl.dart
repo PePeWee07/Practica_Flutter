@@ -9,4 +9,7 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<MyUser> getUserRandom() => datasource.getUserRandom();
+
+  @override
+  Future<List<MyUser>> getUsersRandom(int numberUsers) => datasource.getUsersRandom(numberUsers);
 }

@@ -10,7 +10,7 @@ class UserMapper {
     email: user.email,
     accountName: user.login.username,
     pass: user.login.password,
-    movilPhone: user.phone,
+    mobilePhone: user.phone,
     avatarUrl: user.picture.large,
     city: user.location.city,
     country: user.location.country,

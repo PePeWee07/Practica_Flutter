@@ -5,20 +5,20 @@ import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  final UserRandomDataSource userRandomDataSource;
+  final UserRandomDataSource _userRandomDataSource;
 
-  UserRepositoryImpl({required this.userRandomDataSource});
+  UserRepositoryImpl(this._userRandomDataSource);
 
   @override
   Future<UserEntity> getUser() async {
-    final RandomUser userRandomModel = await userRandomDataSource
+    final RandomUser userRandomModel = await _userRandomDataSource
         .getUserRandom();
     return UserMapper.userRandomModelToEntity(userRandomModel);
   }
 
   @override
   Future<List<UserEntity>> getUsers(int amount) async {
-    final List<RandomUser> usersModel = await userRandomDataSource
+    final List<RandomUser> usersModel = await _userRandomDataSource
         .getUsersRandoms(amount);
     return usersModel
         .map((user) => UserMapper.userRandomModelToEntity(user))

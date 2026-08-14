@@ -1,5 +1,5 @@
-import 'package:random_user_full/user/data/models/user_random_model.dart';
-import 'package:random_user_full/user/domain/entities/user_entity.dart';
+import '../models/user_random_model.dart';
+import '../../domain/entities/user_entity.dart';
 
 class UserMapper {
   static UserEntity userRandomModelToEntity(RandomUser user) => UserEntity(

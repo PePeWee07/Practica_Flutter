@@ -1,8 +1,8 @@
-import 'package:random_user_full/user/data/datasources/user_random_data_source.dart';
-import 'package:random_user_full/user/data/mappers/user_mapper.dart';
-import 'package:random_user_full/user/data/models/user_random_model.dart';
-import 'package:random_user_full/user/domain/entities/user_entity.dart';
-import 'package:random_user_full/user/domain/repositories/user_repository.dart';
+import '../datasources/user_random_data_source.dart';
+import '../mappers/user_mapper.dart';
+import '../models/user_random_model.dart';
+import '../../domain/entities/user_entity.dart';
+import '../../domain/repositories/user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UserRandomDataSource userRandomDataSource;
@@ -20,6 +20,8 @@ class UserRepositoryImpl implements UserRepository {
   Future<List<UserEntity>> getUsers(int amount) async {
     final List<RandomUser> usersModel = await userRandomDataSource
         .getUsersRandoms(amount);
-    return usersModel.map( (user) => UserMapper.userRandomModelToEntity(user)).toList();
+    return usersModel
+        .map((user) => UserMapper.userRandomModelToEntity(user))
+        .toList();
   }
 }

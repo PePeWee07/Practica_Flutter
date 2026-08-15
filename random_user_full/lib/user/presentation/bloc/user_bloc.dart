@@ -18,7 +18,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<UserRequested>(_onUserRequested, transformer: droppable());
   }
 
-  Future<void> _onUserRequested(UserRequested event, Emitter<UserState> emit) async {
+  Future<void> _onUserRequested(
+    UserRequested event,
+    Emitter<UserState> emit,
+  ) async {
     emit(const UserLoading());
 
     try {

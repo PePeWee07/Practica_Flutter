@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'app/di/service_locator.dart';
 import 'user/presentation/screens/home_screen.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MainApp());
 }
 

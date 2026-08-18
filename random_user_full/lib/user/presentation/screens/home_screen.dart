@@ -1,9 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../data/datasources/user_random_data_source_impl.dart';
-import '../../data/repositories/user_repository_impl.dart';
+import '../../../app/di/service_locator.dart';
 import '../../domain/usecases/get_random_user.dart';
 import '../bloc/user_bloc.dart';
 import '../widgets/one_user.dart';
@@ -14,9 +12,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => UserBloc(
-        GetRandomUser(UserRepositoryImpl(UserRandomDataSourceImpl(Dio()))),
-      )..add(const UserRequested()),
+      create: (_) =>
+          UserBloc(serviceLocator<GetRandomUser>())..add(const UserRequested()),
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
